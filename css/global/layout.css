@@ -1,0 +1,12 @@
+.section {
+  height: 56px;
+}
+
+.section-md {
+  height: 50px;
+}
+
+.container {
+  max-width: 650px;
+  margin: auto;
+}

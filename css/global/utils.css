@@ -1,0 +1,119 @@
+/* font utils */
+.uppercase {
+  text-transform: uppercase;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.primary {
+  color: var(--primary);
+}
+
+.gray-200 {
+  color: var(--gray-200);
+}
+
+.gray-300 {
+  color: var(--gray-300);
+}
+
+.gray-400 {
+  color: var(--gray-300);
+}
+
+.error {
+  color: var(--error);
+}
+
+.text-left {
+  text-align: left;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+
+/* Background colors */
+
+.bg-gray-100 {
+  background-color: var(--gray-100);
+}
+
+.bg-gray-200 {
+  background-color: var(--gray-200);
+}
+
+.bg-white {
+  background-color: white;
+}
+
+
+/* Flex & Grid */
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+/* Positioning */
+
+.flex-center {
+  align-items: center;
+}
+
+.margin-center {
+  margin: auto;
+}
+
+
+/* Paddings */
+
+.fit-content {
+  width: fit-content;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.p-10 {
+  padding: 0 10px;
+}
+
+.p-10 {
+  padding: 0 15px;
+}
+
+.p-20 {
+  padding: 0 10px;
+}
+
+.p-60 {
+  padding: 0 60px;
+}

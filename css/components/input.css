@@ -1,0 +1,42 @@
+.input__icon {
+  height: 1.5em;
+}
+
+.input,
+.select{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--gray-000);
+  background-color: white;
+}
+
+.select {
+  background-image: url(/assets/icons/triangle.svg);
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: calc(100% - 8px);
+  box-shadow: none;
+}
+
+.select:hover {
+  cursor: pointer;
+}
+
+option:checked {
+  border: 1px solid var(--gray-000);
+}
+
+.input::placeholder {
+  color: var(--gray-300);
+}
+
+.input--error,
+.select--error {
+  border-bottom: 1px solid var(--error);
+}
+
+.error-message{
+  font-size: 0.625rem;
+  line-height: 1rem;
+  color: var(--error);
+}

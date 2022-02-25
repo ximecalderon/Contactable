@@ -19,6 +19,7 @@ body {
 .main {
   height: 650px;
   justify-content: space-between;
+  position: relative;
 }
 
 .section {

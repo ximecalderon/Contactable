@@ -30,6 +30,10 @@
     gap: 32px;
 }
 
+.avatar {
+    width: 32px;
+}
+
 /* favorite icon */
 
 .favorite,

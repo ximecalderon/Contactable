@@ -18,7 +18,7 @@ await login(credentials).then(console.log);
 
 // signup(newUser).then(console.log)
 
-import { getContacts, createContact, deleteContact } from "./scripts/services/contacts-services.js";
+import { listContacts, createContact, deleteContact, showContact, editContact } from "./scripts/services/contacts-services.js";
 
 const newContact = {
   name: "Testino Probino",
@@ -29,9 +29,16 @@ const newContact = {
 
 await createContact(newContact).then(console.log);
 
-let contacts = await getContacts();
+let contacts = await listContacts();
 console.log(contacts);
 
-await deleteContact(contacts[contacts.length - 1].id).then(console.log);
+await deleteContact(contacts[0].id).then(console.log);
 
-getContacts().then(console.log);
+contacts = await listContacts();
+console.log(contacts);
+
+let contact = await showContact(contacts[0].id);
+console.log(contact);
+
+const updatedContact = { name: "Madino Probino", favorite: true };
+editContact(contacts[0].id, updatedContact).then(console.log);

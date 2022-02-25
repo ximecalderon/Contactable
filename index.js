@@ -9,7 +9,7 @@
 
 // await logout().then(console.log)
 
-import { createUser } from "./scripts/services/signup-service.js";
+import { createUser } from "./scripts/services/user-services.js";
 
 const newUser = {
   email: "ximena@test.com",

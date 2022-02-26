@@ -1,19 +1,13 @@
 export default function footer(...options) {
-  const renderOptions = () => {
-    let optionsTemplate = "";
-    options.forEach((option) => {
-      optionsTemplate += `<a href="#" class="link ${option.class}">${option.tag}</a>`
-    })
-    return optionsTemplate
-  };
+  function renderOption(option) {
+    return `<button type=${option.type} class="link ${option.class}">${option.tag}</button>`
+  }
 
-  let template = `
+  return `
   <footer class="section-md border-top p-15">
     <div class="flex flex-end gap-26 js-footer-options">
-    ${renderOptions()}
+    ${options.map(renderOption).join("")}
     </div>  
   </footer>
   `;
-
-  return template;
 }

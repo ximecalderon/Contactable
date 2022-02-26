@@ -15,12 +15,29 @@ function renderContact(contact) {
   `
 };
 
-function render() {
+function renderCategory(title, contacts) {
+  if (contacts.length == 0) {
+    return ""
+  } else {
+    return `
+      <div class="section-md p-10 border-bottom">
+        <span class="uppercase">${title}</span>
+      </div>
+      ${contacts.map(renderContact).join("")}
+      
+    `
+  }
+}
+
+export default function renderContacts() {
   const contacts = STORE.contacts;
+  const favContacts = contacts.filter((contact) => contact.favorite == true);
+
   if (contacts.length != 0) {
     return `
     <section class="contacts-containter">
-      ${contacts.map(renderContact).join("")}
+      ${renderCategory("Favorites", favContacts)}
+      ${renderCategory(`Contacts(${contacts.length})`, contacts)}
     </section>
     `
   };
@@ -31,13 +48,3 @@ function render() {
   `
 };
 
-const Contacts = {
-  toString() {
-    return render();
-  },
-  addListeners() {
-    // some coment
-  }
-};
-
-export default Contacts;

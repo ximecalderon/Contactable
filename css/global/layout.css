@@ -1,4 +1,9 @@
+/* body {
+  background-color: var(--gray-000);
+} */
+
 #root {
+  background-color: white;
   max-width: 600px;
   margin: auto;
   padding: 0 10px;

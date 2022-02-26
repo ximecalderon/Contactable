@@ -73,7 +73,7 @@
 
 .add-icon {
     position: absolute;
-    bottom: 0;
+    bottom: 14px;
     right: 4px;
     transform: scale(0.95);
     width: 56px;

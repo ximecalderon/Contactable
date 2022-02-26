@@ -14,12 +14,24 @@ const renderLogout = () => {
 
 function render() {
   const title = STORE.currentPage;
-  const headerSize = (title == "Contactable" ? "heading-xl" : "heading-lg");
+  let headerSize;
+  let underline;
+
+  if (title == "Contactable") {
+    headerSize = "heading-xl";
+    underline = ""
+  } else {
+    headerSize = "heading-lg";
+    underline = "border-bottom"
+  }
+
   return `
-    <div class="flex flex-center justify-between">
-        <h1 class="${headerSize} margin-center">${title}</h1>
-        ${renderLogout()}
-    </div>
+    <section class="section ${underline} p-10">
+      <div class="flex flex-center justify-between">
+          <h1 class="${headerSize} margin-center">${title}</h1>
+          ${renderLogout()}
+      </div>
+    </section>
   `
 };
 

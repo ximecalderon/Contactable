@@ -1,4 +1,4 @@
-import { showContact } from "../services/contacts-services.js";
+import ContactsPage from "../pages/contacts-page.js";
 import renderLayout from "../components/layout.js";
 import STORE from "../store.js";
 import footer from "../components/footer.js";
@@ -32,11 +32,22 @@ function render() {
   return `
     ${renderContact()}
     ${footer(
-    { tag: "Backup", class: "js-back", type: "button" },
+    { tag: "Back", class: "js-back", type: "button" },
     { tag: "Delete", class: "js-delete", type: "button" },
     { tag: "Edit", class: "js-edit", type: "button" }
   )}
   `
+};
+
+function listenGoBack() {
+  const button = document.querySelector(".js-back");
+
+  button.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    await STORE.fetchContacts();
+    renderLayout(ContactsPage)
+  });
 };
 
 const ContactPage =
@@ -45,7 +56,7 @@ const ContactPage =
     return render();
   },
   addListeners() {
-
+    listenGoBack()
   },
   title: "Contact Detail"
 };

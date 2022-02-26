@@ -37,7 +37,7 @@ export default function renderContacts() {
     return `
     <section class="contacts-containter">
       ${renderCategory("Favorites", favContacts)}
-      ${renderCategory(`Contacts(${contacts.length})`, contacts)}
+      ${renderCategory(`Contacts (${contacts.length})`, contacts)}
     </section>
     `
   };

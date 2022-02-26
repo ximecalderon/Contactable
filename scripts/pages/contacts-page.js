@@ -1,14 +1,16 @@
-// import { listContacts } from "../services/contacts-services.js";
-import header from "../components/header.js";
 import Contacts from "../components/contacts.js";
 import STORE from "../store.js";
 
 function render() {
-  STORE.setCurrentPage("ContactsPage");
+  STORE.setCurrentPage("Contactable");
 
   return `
-    ${header("Contactable")}
-    ${Contacts}
+    <main class="main">
+      ${Contacts}
+      <div class="add-icon">
+        <img src="/assets/icons/cross.svg" alt="add-contact" class="margin-center">
+      </div>
+    </main>
   `
 };
 
@@ -19,7 +21,8 @@ const ContactsPage =
   },
   addListeners() {
 
-  }
+  },
+  title: "Contactable"
 };
 
 export default ContactsPage;

@@ -1,17 +1,20 @@
-import DOMHandler from "./scripts/dom-handler.js";
-import STORE from "./scripts/store.js";
+import renderLayout from "./scripts/components/layout.js";
 import LoginPage from "./scripts/pages/login-page.js";
+import SignupPage from "./scripts/pages/signup-page.js";
 import ContactsPage from "./scripts/pages/contacts-page.js";
+import STORE from "./scripts/store.js";
 
 switch (STORE.currentPage) {
-  case "LoginPage":
-    DOMHandler.load(LoginPage);
+  case "Login":
+    renderLayout(LoginPage)
     break;
-  case "ContactsPage":
+  case "Signup":
+    renderLayout(SignupPage)
+    break;
+  case "Contactable":
     await STORE.fetchContacts();
-    DOMHandler.load(ContactsPage);
+    renderLayout(ContactsPage)
     break;
   default:
-    STORE.setCurrentPage("LoginPage");
-    DOMHandler.load(LoginPage);
+    renderLayout(LoginPage)
 }

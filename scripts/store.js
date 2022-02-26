@@ -6,7 +6,7 @@ const loggedIn = function () {
 
 function getCurrentPage() {
   if (loggedIn()) return sessionStorage.getItem("current_page");
-  return "LoginPage"
+  return "Login"
 };
 
 async function fetchContacts() {
@@ -15,7 +15,7 @@ async function fetchContacts() {
 };
 
 const setCurrentPage = function (page) {
-  sessionStorage.setItem("current_page", page)
+  return sessionStorage.setItem("current_page", page)
 };
 
 const STORE = {

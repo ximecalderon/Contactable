@@ -17,17 +17,17 @@ function renderContact(contact) {
 
 function render() {
   const contacts = STORE.contacts;
-  console.log(contacts)
-
+  if (contacts.length != 0) {
+    return `
+    <section class="contacts-containter">
+      ${contacts.map(renderContact).join("")}
+    </section>
+    `
+  };
   return `
-    <main class="main">
-      <section class="contacts-containter">
-        ${contacts.map(renderContact).join("")}
-      </section>
-      <div class="add-icon">
-          <img src="/assets/icons/cross.svg" alt="add-contact" class="margin-center">
-      </div>
-    </main>
+    <div class="empty-container">
+      <span class="heading">No contacts yet</span>
+    </div>
   `
 };
 

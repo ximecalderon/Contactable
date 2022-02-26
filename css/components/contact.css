@@ -59,6 +59,16 @@
     fill: black;
 }
 
+/* no contacts */
+
+.empty-container {
+    height: calc(100% - 56px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
 /* add contact icon */
 
 .add-icon {

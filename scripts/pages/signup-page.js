@@ -1,13 +1,13 @@
-import { login } from "../services/sessions-services.js";
+import { signup } from "../services/user-services.js";
 import input from "../components/inputs.js";
 import footer from "../components/footer.js";
 import renderLayout from "../components/layout.js";
 import ContactsPage from "../pages/contacts-page.js";
-import SignupPage from "../pages/signup-page.js";
+import LoginPage from "../pages/login-page.js";
 import STORE from "../store.js";
 
 function render() {
-  const { loginError } = LoginPage.state;
+  const { signupError } = SignupPage.state;
 
   return `
     <form class="main js-form">
@@ -17,7 +17,7 @@ function render() {
     id: "email",
     placeholder: "email",
     type: "email",
-    value: "ximena@mail.com",
+    value: "test1@ximena.com",
     required: true
   })}
       ${input({
@@ -28,11 +28,11 @@ function render() {
     value: "letmein",
     required: true
   })}
-      ${loginError ? `<span class="error-message">${loginError}</span>` : ""}
+      ${signupError ? `<span class="error-message">${signupError}</span>` : ""}
     </section>
     ${footer(
-    { tag: "Signup", class: "js-signup-form", type: "button" },
-    { tag: "Login", class: "js-login-submit", type: "submit" }
+    { tag: "Login", class: "js-login-form", type: "button" },
+    { tag: "Create Account", class: "js-signup-submit", type: "submit" }
   )}
   </form>
   `;
@@ -51,41 +51,43 @@ function listenSubmitForm() {
         password: password.value,
       };
 
-      const user = await login(credentials);
+      const user = await signup(credentials);
       STORE.user = user;
 
       await STORE.fetchContacts();
 
       renderLayout(ContactsPage);
     } catch (error) {
-      LoginPage.state.loginError = error.message;
-      renderLayout(LoginPage);
+      LoginPage.state.signupError = error.message;
+
+      renderLayout(SignupPage);
     }
   });
 };
 
-function listenSignup() {
-  const button = document.querySelector(".js-signup-form");
+function listenLogin() {
+  const button = document.querySelector(".js-login-form");
 
   button.addEventListener("click", (event) => {
     event.preventDefault();
 
-    renderLayout(SignupPage);
+    STORE.setCurrentPage("Login");
+    renderLayout(LoginPage);
   });
 };
 
-const LoginPage = {
+const SignupPage = {
   toString() {
     return render();
   },
   addListeners() {
-    listenSignup();
+    listenLogin();
     listenSubmitForm()
   },
   state: {
-    loginError: null
+    signupError: null
   },
-  title: "Login"
+  title: "Signup"
 };
 
-export default LoginPage;
+export default SignupPage;

@@ -2,7 +2,7 @@ import STORE from "../store.js";
 
 function renderContact(contact) {
   return `
-    <div class="contact-card">
+    <div class="contact-card" data-id=${contact.id}>
       <div class="contact-info">
           <img src="/assets/img/user_default.png" alt="user" class="avatar">
           <span>${contact.name}</span>

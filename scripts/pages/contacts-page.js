@@ -1,4 +1,6 @@
+import renderLayout from "../components/layout.js";
 import renderContacts from "../components/contacts.js";
+import { createContact, showContact, editContact } from "../services/contacts-services.js";
 import STORE from "../store.js";
 
 function render() {
@@ -15,30 +17,42 @@ function render() {
 };
 
 function listenEditContact() {
-  const triggerEl = document.querySelector(".contact-info");
+  const triggers = document.querySelectorAll(".contact-info");
 
-  triggerEl.addEventListener("click", (event) => {
-    event.preventDefault();
-    // some code
-  });
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      const id = event.target.closest("[data-id]");
+    });
+  })
 };
 
 function listenFavoriteContact() {
-  const triggerEl = document.querySelector(".favorite");
+  const triggers = document.querySelectorAll(".favorite");
 
-  triggerEl.addEventListener("click", (event) => {
-    event.preventDefault();
-    // some code
-  });
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const id = event.target.closest("[data-id]").dataset.id;
+      const contact = STORE.contacts.find(contact => contact.id == id)
+      const value = (contact.favorite ? false : true)
+
+      await editContact(id, { favorite: value });
+      await STORE.fetchContacts();
+      renderLayout(ContactsPage)
+    });
+  })
 };
 
 function listenAddContact() {
-  const triggerEl = document.querySelector(".add-icon");
+  const triggers = document.querySelectorAll(".add-icon");
 
-  triggerEl.addEventListener("click", (event) => {
-    event.preventDefault();
-    // some code
-  });
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      const id = event.target.closest("[data-id]");
+    });
+  })
 };
 
 const ContactsPage =
@@ -47,7 +61,7 @@ const ContactsPage =
     return render();
   },
   addListeners() {
-
+    listenFavoriteContact()
   },
   title: "Contactable"
 };

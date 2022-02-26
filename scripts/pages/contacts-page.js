@@ -1,7 +1,7 @@
 import renderLayout from "../components/layout.js";
 import renderContacts from "../components/contacts.js";
 import ContactPage from "../pages/show-contact.js";
-import { createContact, showContact, editContact } from "../services/contacts-services.js";
+import { createContact, editContact } from "../services/contacts-services.js";
 import STORE from "../store.js";
 
 function render() {

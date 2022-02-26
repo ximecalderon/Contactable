@@ -2,7 +2,7 @@ import ContactsPage from "../pages/contacts-page.js";
 import renderLayout from "../components/layout.js";
 import STORE from "../store.js";
 import footer from "../components/footer.js";
-
+import { deleteContact } from "../services/contacts-services.js";
 
 function renderContact() {
   const contact = STORE.contact;
@@ -50,13 +50,27 @@ function listenGoBack() {
   });
 };
 
+function listenDelete() {
+  const button = document.querySelector(".js-delete");
+
+  button.addEventListener("click", async (event) => {
+    event.preventDefault();
+    const id = sessionStorage.getItem("contactable-contactID");
+
+    await deleteContact(id);
+    await STORE.fetchContacts();
+    renderLayout(ContactsPage)
+  });
+};
+
 const ContactPage =
 {
   toString() {
     return render();
   },
   addListeners() {
-    listenGoBack()
+    listenGoBack();
+    listenDelete()
   },
   title: "Contact Detail"
 };

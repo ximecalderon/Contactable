@@ -1,6 +1,7 @@
 import renderLayout from "../components/layout.js";
 import renderContacts from "../components/contacts.js";
 import ContactPage from "../pages/show-contact.js";
+import AddContactPage from "../pages/add-contact.js";
 import { createContact, editContact } from "../services/contacts-services.js";
 import STORE from "../store.js";
 
@@ -54,7 +55,7 @@ function listenAddContact() {
   triggers.forEach((trigger) => {
     trigger.addEventListener("click", (event) => {
       event.preventDefault();
-      const id = event.target.closest("[data-id]");
+      renderLayout(AddContactPage)
     });
   })
 };
@@ -66,7 +67,8 @@ const ContactsPage =
   },
   addListeners() {
     listenShowContact();
-    listenFavoriteContact()
+    listenFavoriteContact();
+    listenAddContact()
   },
   title: "Contactable"
 };

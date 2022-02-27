@@ -3,6 +3,7 @@ import LoginPage from "./scripts/pages/login-page.js";
 import SignupPage from "./scripts/pages/signup-page.js";
 import ContactsPage from "./scripts/pages/contacts-page.js";
 import ContactPage from "./scripts/pages/show-contact.js";
+import AddContactPage from "./scripts/pages/add-contact.js";
 import STORE from "./scripts/store.js";
 
 switch (STORE.currentPage) {
@@ -19,6 +20,9 @@ switch (STORE.currentPage) {
   case "Contact Detail":
     await STORE.getContact();
     renderLayout(ContactPage)
+    break;
+  case "Create new contact":
+    renderLayout(AddContactPage)
     break;
   default:
     renderLayout(LoginPage)

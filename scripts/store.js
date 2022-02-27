@@ -10,9 +10,9 @@ function getCurrentPage() {
   return "Login"
 };
 
-function getContactID() {
-  return sessionStorage.getItem("contactable-contactID")
-};
+// function getContactID() {
+//   return sessionStorage.getItem("contactable-contactID")
+// };
 
 async function fetchContacts() {
   if (loggedIn()) return this.contacts = await listContacts();

@@ -1,4 +1,4 @@
-export default function input({
+export function input({
   label,
   id,
   name,
@@ -22,3 +22,21 @@ export default function input({
     </div>
   `;
 }
+
+export function select({
+  id,
+  name
+}) {
+  return `
+    <div class="section p-60">
+      <select required id="${id}" name="${name}" class="select">
+          <option disabled selected hidden class="gray-300">Relation</option>
+          <option value="Family">Family</option>
+          <option value="Friends">Friends</option>
+          <option value="Work">Work</option>
+          <option value="Acquaintance">Acquaintance</option>
+      </select>
+    </div>
+  `;
+}
+

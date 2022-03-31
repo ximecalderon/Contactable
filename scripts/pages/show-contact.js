@@ -1,4 +1,5 @@
 import ContactsPage from "../pages/contacts-page.js";
+import EditContactPage from "../pages/edit-contact.js";
 import renderLayout from "../components/layout.js";
 import STORE from "../store.js";
 import footer from "../components/footer.js";
@@ -10,7 +11,7 @@ function renderContact() {
   return `
     <section>
       <div class="user-detail-info">
-          <img src="/assets/img/user_default.png" alt="user_avatar">
+          <img src="assets/img/user_default.png" alt="user_avatar">
           <h1 class="heading">${contact.name}</h1>
           <span class="gray-400">${contact.relation}</span>
       </div>
@@ -50,6 +51,17 @@ function listenGoBack() {
   });
 };
 
+function listenEdit() {
+  const button = document.querySelector(".js-edit");
+
+  button.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    await STORE.getContact();
+    renderLayout(EditContactPage)
+  });
+};
+
 function listenDelete() {
   const button = document.querySelector(".js-delete");
 
@@ -70,7 +82,8 @@ const ContactPage =
   },
   addListeners() {
     listenGoBack();
-    listenDelete()
+    listenDelete();
+    listenEdit()
   },
   title: "Contact Detail"
 };

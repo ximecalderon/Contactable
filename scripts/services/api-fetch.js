@@ -35,8 +35,9 @@ export default async function apiFetch(
     } catch (error) {
       throw new Error(response.statusText);
     }
-    throw new Error(data.errors);
-  }
+    if (data.errors) throw new Error(JSON.stringify(data.errors));
+    throw new Error(JSON.stringify(data))
+  };
   // data.errors will be catched and printed on page components
 
   try {
@@ -47,3 +48,10 @@ export default async function apiFetch(
 
   return data;
 }
+
+// {
+//   name: ["can be blank"],
+//   relation: [
+//     "relation cant be blank"
+//   ]
+// }

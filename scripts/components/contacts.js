@@ -4,7 +4,7 @@ function renderContact(contact) {
   return `
     <div class="contact-card" data-id=${contact.id}>
       <div class="contact-info">
-          <img src="/assets/img/user_default.png" alt="user" class="avatar">
+          <img src="assets/img/user_default.png" alt="user" class="avatar">
           <span>${contact.name}</span>
       </div>
       <svg class="favorite ${contact.favorite == true ? "favorite-true" : ""} width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

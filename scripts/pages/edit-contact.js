@@ -1,4 +1,4 @@
-import { createContact } from "../services/contacts-services.js";
+import { editContact } from "../services/contacts-services.js";
 import { input, select } from "../components/inputs.js";
 import footer from "../components/footer.js";
 import renderLayout from "../components/layout.js";
@@ -6,7 +6,8 @@ import ContactsPage from "../pages/contacts-page.js";
 import STORE from "../store.js";
 
 function render() {
-  const { errors } = AddContactPage.state;
+  const contact = STORE.contact;
+  const { errors } = EditContactPage.state;
 
   return `
     <form class="main js-form">
@@ -16,6 +17,7 @@ function render() {
     id: "name",
     placeholder: "Name",
     type: "text",
+    value: contact.name,
     required: true,
     errors: errors.name
   })}
@@ -24,6 +26,7 @@ function render() {
     id: "number",
     placeholder: "Number",
     type: "number",
+    value: contact.number,
     required: true,
     errors: errors.number
   })}
@@ -32,12 +35,14 @@ function render() {
     id: "email",
     placeholder: "Email",
     type: "email",
+    value: contact.email,
     required: true,
     errors: errors.email
   })}
   ${select({
     id: "relation",
     name: "relation",
+    selected: contact.relation,
     errors: errors.relation
   })}
       </section>
@@ -70,26 +75,27 @@ function listenSubmitForm() {
       event.preventDefault();
       const { name, number, email, relation } = event.target;
 
-      const newContact = {
+      const updatedContact = {
         name: name.value,
         number: number.value,
         email: email.value,
         relation: relation.value,
       };
 
-      response = await createContact(newContact);
+      const id = STORE.contact.id;
+      response = await editContact(id, updatedContact);
 
       await STORE.fetchContacts();
       renderLayout(ContactsPage);
     } catch (error) {
-      error = JSON.parse(error.message);
-      AddContactPage.state.errors = error;
-      renderLayout(AddContactPage);
+      console.log(response);
+      EditContactPage.state.errors = response;
+      renderLayout(EditContactPage);
     }
   });
 };
 
-const AddContactPage =
+const EditContactPage =
 {
   toString() {
     return render();
@@ -101,7 +107,7 @@ const AddContactPage =
   state: {
     errors: {},
   },
-  title: "Create new contact"
+  title: "Edit contact"
 };
 
-export default AddContactPage
+export default EditContactPage

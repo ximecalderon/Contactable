@@ -12,7 +12,7 @@ function render() {
     <main class="main">
       ${renderContacts()}
       <div class="add-icon">
-        <img src="/assets/icons/cross.svg" alt="add-contact" class="margin-center">
+        <img src="assets/icons/cross.svg" alt="add-contact" class="margin-center">
       </div>
     </main>
   `

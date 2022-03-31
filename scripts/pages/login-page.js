@@ -17,7 +17,6 @@ function render() {
     id: "email",
     placeholder: "email",
     type: "email",
-    value: "ximena@mail.com",
     required: true
   })}
       ${input({
@@ -25,7 +24,6 @@ function render() {
     id: "password",
     placeholder: "password",
     type: "password",
-    value: "letmein",
     required: true
   })}
       ${loginError ? `<span class="error-message">${loginError}</span>` : ""}

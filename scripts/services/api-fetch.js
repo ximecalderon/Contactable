@@ -38,7 +38,6 @@ export default async function apiFetch(
     if (data.errors) throw new Error(JSON.stringify(data.errors));
     throw new Error(JSON.stringify(data))
   };
-  // data.errors will be catched and printed on page components
 
   try {
     data = await response.json();
@@ -48,10 +47,3 @@ export default async function apiFetch(
 
   return data;
 }
-
-// {
-//   name: ["can be blank"],
-//   relation: [
-//     "relation cant be blank"
-//   ]
-// }

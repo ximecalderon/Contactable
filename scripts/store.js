@@ -6,8 +6,7 @@ const loggedIn = function () {
 };
 
 function getCurrentPage() {
-  if (loggedIn()) return sessionStorage.getItem("current_page");
-  return "Login"
+  return sessionStorage.getItem("current_page");
 };
 
 async function fetchContacts() {

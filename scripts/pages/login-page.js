@@ -26,7 +26,7 @@ function render() {
     type: "password",
     required: true
   })}
-      ${loginError ? `<span class="error-message">${loginError}</span>` : ""}
+      ${loginError ? `<span class="error-message">${loginError}</span > ` : ""}
     </section>
     ${footer(
     { tag: "Signup", class: "js-signup-form", type: "button" },
@@ -56,7 +56,7 @@ function listenSubmitForm() {
 
       renderLayout(ContactsPage);
     } catch (error) {
-      LoginPage.state.loginError = error.message;
+      LoginPage.state.loginError = JSON.parse(error.message);
       renderLayout(LoginPage);
     }
   });

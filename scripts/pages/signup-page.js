@@ -1,5 +1,5 @@
 import { signup } from "../services/user-services.js";
-import {input} from "../components/inputs.js";
+import { input } from "../components/inputs.js";
 import footer from "../components/footer.js";
 import renderLayout from "../components/layout.js";
 import ContactsPage from "../pages/contacts-page.js";
@@ -56,7 +56,7 @@ function listenSubmitForm() {
 
       renderLayout(ContactsPage);
     } catch (error) {
-      LoginPage.state.signupError = error.message;
+      SignupPage.state.signupError = JSON.parse(error.message);
 
       renderLayout(SignupPage);
     }

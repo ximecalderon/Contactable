@@ -3,7 +3,7 @@
 }
 
 .input,
-.select{
+.select {
   width: 100%;
   border: none;
   border-bottom: 1px solid var(--gray-000);
@@ -35,8 +35,9 @@ option:checked {
   border-bottom: 1px solid var(--error);
 }
 
-.error-message{
+.error-message {
   font-size: 0.625rem;
   line-height: 1rem;
   color: var(--error);
+  padding: 0 60px;
 }
